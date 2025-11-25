@@ -36,8 +36,8 @@ class HashTable:
         bucket = self.table[posicao]
         
         # verifica se a chave ja existe na lista
-        for i, (k, v) in enumerate(table):
-            if k == key:
+        for i, (existing_key, existing_value) in enumerate(bucket):
+            if existing_key == key:
                 # se existe, atualiza o valor
                 bucket[i] = (key, value)
                 return
@@ -95,9 +95,9 @@ class HashTable:
         for nome in nomes:
             # calcula hash manualmente para exibir
             hash_val = 0
-            key = str(nome).upper()
+            key = nome
             for i, char in enumerate(key):
-                if char.isalpha():
+                if char:
                     hash_val += ord(char) * (2 ** i)
             
             # calcula indice usando funcao hash

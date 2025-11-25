@@ -19,12 +19,12 @@ class HashTable:
     
     def insert(self, key, value):
         # insere item na tabela
-        posicao = self._hash(key)
-        bucket = self.table[posicao]
+        position = self._hash(key)
+        bucket = self.table[position]
         
         # verifica se ja existe
-        for i, (k, v) in enumerate(bucket):
-            if k == key:
+        for i, (existing_key, existing_value) in enumerate(bucket):
+            if existing_key == key:
                 bucket[i] = (key, value)
                 return
         
@@ -39,9 +39,9 @@ class HashTable:
         posicao = self._hash(key)
         bucket = self.table[posicao]
         
-        for k, v in bucket:
-            if k == key:
-                return v
+        for existing_key, existing_value in bucket:
+            if existing_key == key:
+                return existing_value
         return None
     
 
